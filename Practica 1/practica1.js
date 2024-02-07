@@ -3,7 +3,18 @@ const http = require("http")
 const fs = require("fs")
 const urlModule = require('url');
 
+const path = require("path");
 
+/*
+Corrección:
+Al entrar en la página se produce un error
+    ReferenceError: filePath is not defined
+    Que detiene el servidor. Efectivamente la declaración y asignación de esa variable está comentada. La descomento para que funcione.
+    Al descomentarlo me da un error ya que path no está definido. Añado la línea const path = require("path");
+
+*/
+
+// Corrección: Este array no me gusta un pelo ¿Y si hay 600 páginas? ¿Y si queremos incluir una nueva? ¿Tenemos que modificar el código?
 let paginas = ["/index.html", "/pagina2.html", "/pagina3.html", "/", "/img/maxresdefault.jpg", "/styles.css"]
 
 const mm = require("./contentType.js");
@@ -18,7 +29,7 @@ const requestListener = function (request, response){
     let url = request.url
     url = url.split("?")[0]
     
-    if(url == paginas[3]){
+    if(url == paginas[3]){ // Corrección: Prefiero que pongas '/' o que me declares una variable que almacene '/' pero resulta raro que accedas a la posición 3 de un array ¿Por qué la 3?
         console.log("entro")
         url = paginas[0]
         console.log(url)
@@ -45,9 +56,9 @@ const requestListener = function (request, response){
             response.end();
         });
     } else if (request.url === '/estilos.css'){
-        //const filePath = path.join(__dirname, 'styles.css');
+        const filePath = path.join(__dirname, 'styles.css');
 
-        fs.readFile(filePath, 'utf8', (err, data) => {
+        fs.readFile(filePath, 'utf8', (err, data) => { // Corrección: ¿No se podría haber implementado de forma que solo hubiera un fs.readFile?
             if (err) {
                 console.error(err);
                 response.writeHead(500, {'Content-Type': 'text/plain'});
