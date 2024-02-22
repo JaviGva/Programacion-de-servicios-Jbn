@@ -57,7 +57,9 @@ const requestListener = function (request, response){
         });
     } else if (request.url === '/estilos.css'){
         const filePath = path.join(__dirname, 'styles.css');
-
+        // Corrección: En este caso se tiene que responder al cliente, con un código específico para tal efecto, que estilos.css ya no existe y que debe hacer
+        // la petición sobre el recurso styles.css. Para eso hay un código de respuesta (rango de los 300) y una cabecera http que permite indicar la nueva ubicación del recurso.
+        // Investiga en Internet HTTP Redirection.
         fs.readFile(filePath, 'utf8', (err, data) => { // Corrección: ¿No se podría haber implementado de forma que solo hubiera un fs.readFile?
             if (err) {
                 console.error(err);
