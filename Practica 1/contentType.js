@@ -1,9 +1,19 @@
-function ContentType (url){
+function ContentType(url) {
     const path = require('path');
     let extension = path.extname(url);
     extension = extension.slice(1);
-    // Corrección: Debería comprobarse la extensión para ver si es html, css o jpg. En función de eso devolverá el content type correspondiente.
-    return "text/" + extension;
+
+    // Comprobar la extensión para determinar el content type
+    switch (extension) {
+        case 'html':
+            return 'text/html';
+        case 'css':
+            return 'text/css';
+        case 'jpg':
+            return 'image/jpeg';
+        default:
+            return 'application/octet-stream'; // Tipo por defecto si no se reconoce la extensión
+    }
 }
 
 module.exports = {
