@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "893bd921-0805-4de8-a7ef-a694c8fcd762",
+		"name": "CRUD Articulos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33243300"
+	},
+	"item": [
+		{
+			"name": "GetAllArticulos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/articulos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"articulos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateArticulo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Pelota\",\r\n    \"precio\": 100,\r\n    \"iva\": 21\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/articulos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"articulos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFilterByPrecio&Iva",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/articulos/filter?P=600&I=21",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"articulos",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "P",
+							"value": "600"
+						},
+						{
+							"key": "I",
+							"value": "21"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPrecioConIva",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/articulos/65e7558cdd8d5a3ea5871fb8",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"articulos",
+						"65e7558cdd8d5a3ea5871fb8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/paginas/index",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"paginas",
+						"index"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
